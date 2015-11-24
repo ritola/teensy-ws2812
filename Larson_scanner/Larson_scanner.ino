@@ -19,27 +19,34 @@ void setup() {
   strip.show(); // Initialize all pixels to 'off'
 }
 
+
+void loop() {
+  larson_scanner();
+}
+
 int fademax = 9;
-int fadeouts[10] = { 0, 0, 0, 0, 0, 1, 4, 16, 64, 255 };
+int fadeouts_r[10] = { 0, 0, 0, 0, 1, 4, 16, 64, 128, 255 };
+int fadeouts_g[10] = { 0, 0, 0, 0, 0, 1,  4, 16,  48, 136 };
+int fadeouts_b[10] = { 0, 0, 0, 0, 0, 1,  2,  8,  16, 48 };
 int fadelevels[LEDS] = {0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0};
 int scancount = 28;
 int scanpos[28] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,13,12,11,10,9,8,7,6,5,4,3,2,1 };
 
-void loop() {
-  // Some example procedures showing how to display to the pixels:
+void larson_scanner() {
   for(int i=0; i<scancount; i++) {
     fadelevels[scanpos[i]] = fademax + 1;
     fadeout();
-    delay(50);
+    delay(60);
   }  
 }
 
 void fadeout() {
   for (int i=0; i<LEDS; i++) {
     if (fadelevels[i] > 0) fadelevels[i]--;
-    int level = fadeouts[fadelevels[i]];
-//    uint32_t c = strip.Color(level, 0, level / 2); // Pink
-    uint32_t c = strip.Color(level, level, level); // White
+    int level_r = fadeouts_r[fadelevels[i]];
+    int level_g = fadeouts_g[fadelevels[i]];
+    int level_b = fadeouts_b[fadelevels[i]];
+    uint32_t c = strip.Color(level_r, level_g, level_b);
     strip.setPixelColor(i, c);
   }
   strip.show();
