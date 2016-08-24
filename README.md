@@ -1,12 +1,10 @@
-Teensy + WS2812
-===============
+# Teensy + WS2812
 
 Controlling WS2812 LED's with Teensy 2.0.
 
 This is based on [Adafruit Neopixel](https://github.com/adafruit/Adafruit_NeoPixel) example.
 
-Requirements
-------------
+## Requirements
 
 Hardware:
 * [Teensy 2.0 development board](http://www.pjrc.com/teensy/)
@@ -17,3 +15,7 @@ Software:
 * [Teensyduino](http://www.pjrc.com/teensy/td_download.html)
 * [Adafruit Neopixel](https://github.com/adafruit/Adafruit_NeoPixel) library in Arduino library folder.
 
+## Programming
+
+* Select the correct COM port
+* Select Tools > Board > Arduino Leonardo
